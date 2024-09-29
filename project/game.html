@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Викторина</title>
+   <title>Игра</title>
+   <link rel="icon" href="koles.png" type="image/x-icon">
+  <style>
+  body {
+  background-color: #ff8181;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Изменено для центрирования */
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+  background-image: url("sky.jpg"); /* Добавьте ссылку */
+  background-size: cover;
+  object-fit: contain;
+}
+
+#nickname-input-container { /* Добавлен контейнер */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20%; /* Добавлено для центрирования */
+
+  h1 {
+    font-family:mv boli;
+    font-size: 56px; /* Увеличен размер текста */
+ margin-bottom: 20px;
+  }
+}
+
+#quiz-buttons h2 {
+  font-family:mv boli;
+  font-size: 56px; /* Увеличен размер текста */
+  margin-bottom: 20px;
+  display: none; 
+}
+#quiz-buttons {
+  display: none; /* Изначально скрываем контейнер кнопок */
+  flex-direction: column;
+  align-items: center;
+  }
+#nickname-input {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 60px;
+}
+
+#nickname-display {
+  font-size: 48px; /* Увеличен размер текста */
+  position: fixed;
+  bottom: 10px;
+  right: 10px; 
+  color: #ffad3f;
+  text-shadow: -1px -1px 0 black, -1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  display: none; /* Изначально скрываем */
+}
+
+.quiz-buttons {
+  display: none; /* Изначально скрываем */
+  flex-direction: column;
+  align-items: center;
+}
+
+.quiz-button {
+  background-color: #ffad3f; 
+  color: white;
+  padding: 15px 30px; /* Увеличен размер */
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px; /* Увеличен размер текста */
+  display: none;
+  
+}
+
+button:hover {
+  background-color: #ff554f; 
+  transition: background-color 0.9s ease; /* Плавный переход цвета */  
+} 
+
+#backButton {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #ffad3f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none; 
+    cursor: pointer;
+    z-index: 10; /* Убедитесь, что кнопка отображается поверх других элементов */
+ background-color: #ff554f; /* Цвет фона кнопки при наведении */
+ transition: background-color 0.6s ease; /* Плавный переход цвета */
+    }
+	 </style>
+</head>
+<body>
+ <div id="nickname-input-container"> 
+  <h1><i>Введите своё Имя</i></h1>
+  <input type="text" id="nickname-input">
+</div>
+
+ <div id="quiz-buttons">
+  <h2>Выберите Викторину:</h2> 
+  <button class="quiz-button" onclick="startQuiz('anime')">Аниме</button>
+  <button class="quiz-button" onclick="startQuiz('animals')">Животные</button>
+ </div>
+
+<div id="nickname-display"></div>
+
+<!-- Кнопка "Вернуться" -->
+  <a href="new.html" id="backButton">Вернуться</a>
+
+  <script>
+  const nicknameInput = document.getElementById("nickname-input");
+const nicknameDisplay = document.getElementById("nickname-display");
+const nicknameInputContainer = document.getElementById("nickname-input-container");
+const quizButtonsContainer = document.getElementById("quiz-buttons"); // Переименована переменная
+const quizButtons = document.querySelectorAll(".quiz-button"); // Остается без изменений
+
+nicknameInput.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    nicknameDisplay.textContent = "Игрок: " + nicknameInput.value;
+    nicknameInputContainer.style.display = "none"; // Скрываем поле ввода
+    quizButtonsContainer.style.display = "flex"; // Показываем контейнер кнопок
+    quizButtonsContainer.querySelector("h2").style.display = "block"; // Показываем заголовок
+    nicknameDisplay.style.display = "block"; // Показываем надпись "Игрок"
+
+    quizButtons.forEach(button => { // Теперь перебираем кнопки
+      button.style.display = "block";
+    });
+  }
+});
+
+    function startQuiz(quizType) {
+      if (quizType === 'anime') {
+        localStorage.setItem("nickname", nicknameInput.value);
+        window.location.href = "anime.html";
+      } else if (quizType === 'animals') {
+        localStorage.setItem("nickname", nicknameInput.value);
+        window.location.href = "animals.html"; // Предполагается, что у вас есть файл animals.html
+      } else {
+        // ... (логика для других викторин)
+      }
+    }
+
+    
+  </script>
+
+</body>
+</html>

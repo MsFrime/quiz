@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Результаты викторины</title>
+  <meta charset="UTF-8">
+  <link rel="icon" href="koles.png" type="image/x-icon">
+  <style>
+    body {
+      background-color: #ff8181;
+      font-family: sans-serif;
+      background-image: url("sky.jpg");
+      /* Добавьте ссылку */
+      background-size: cover;
+	  object-fit: contain;
+	  <button id="return-button">Вернуться</button>
+    }
+
+    h1 {
+      text-align: center;
+	  color: #ff8181;
+	  font-size: 56px;
+    }
+
+    table {
+	  background-color: #ff8181;
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+	/* Стили для кнопки "Вернуться" */
+    #backButton {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #ffad3f;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none; 
+      cursor: pointer;
+      z-index: 10; /* Убедитесь, что кнопка отображается поверх других элементов */
+	  background-color: #ff554f; /* Цвет фона кнопки при наведении */
+			transition: background-color 0.6s ease; /* Плавный переход цвета */
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Результаты викторины</h1>
+    <table id="resultsTable">
+      <thead>
+        <tr>
+          <th>Имя</th>
+          <th>Очки</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+<a href="new.html" id="backButton">Вернуться</a>
+  <script>
+    window.onload = () => {
+      const results = JSON.parse(localStorage.getItem("results"));
+      if (results) {
+        const table = document.getElementById("resultsTable");
+        const row = table.insertRow();
+        const nameCell = row.insertCell();
+        const scoreCell = row.insertCell();
+        nameCell.textContent = results.name;
+        scoreCell.textContent = results.score;
+      } else {
+        alert("Результаты не найдены!");
+      }
+    };
+  </script>
+</body>
+</html>
