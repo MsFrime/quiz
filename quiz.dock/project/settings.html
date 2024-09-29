@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Настройки</title>
+  <link rel="icon" href="koles.png" type="image/x-icon">
+  <style>
+    body {
+      background-color: #ff8181;
+      font-family: sans-serif;
+      background-image: url("sky.jpg");
+      /* Добавьте ссылку */
+      background-size: cover;
+	  object-fit: contain;
+	  <button id="return-button">Вернуться</button>
+    }
+
+    h1 {
+      text-align: center;
+	  color: #ff8181;
+	  font-size: 56px;
+    }
+
+    table {
+	  background-color: #ff8181;
+      width: 80%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #ffad3f;
+      color: white;
+    }
+	/* Стили для кнопки "Вернуться" */
+    #backButton {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #ffad3f;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none; 
+      cursor: pointer;
+      z-index: 10; /* Убедитесь, что кнопка отображается поверх других элементов */
+	  background-color: #ff554f; /* Цвет фона кнопки при наведении */
+			transition: background-color 0.6s ease; /* Плавный переход цвета */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Результаты Викторин</h1>
+  
+  <table id="resultsTable">
+    <thead>
+      <tr>
+        <th>Викторина</th>
+        <th>Счёт</th>
+      </tr>
+    </thead>
+    <tbody id="results-list"></tbody>
+  </table>
+
+  <!-- Кнопка "Вернуться" -->
+  <a href="new.html" id="backButton">Вернуться</a>
+
+<script>
+  // Функция для загрузки результатов с сервера
+  function loadResultsFromServer() {
+    fetch('https://0e86952e-95a8-4a8a-a8c8-12bc2a2c8b43-00-3kxgmvptd7iej.sisko.replit.dev:3001/, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Сеть не отвечает');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Результаты:', data);
+        // Здесь вы можете добавить логику для отображения результатов в интерфейсе
+    })
+    .catch(error => console.error('Ошибка:', error));
+}
+
+// Вызов функции для загрузки результатов
+loadResultsFromServer();
+</script>
+
+</body>
+</html>

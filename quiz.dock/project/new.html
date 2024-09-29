@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Викторина</title>
+	<link rel="icon" href="koles.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #ff8181; /* Светло-красный фон */
+            display: flex;
+            flex-direction: column;
+			position: relative; /* Для использования абсолютного позиционирования */
+            align-items: center; /* Центрирование по горизонтали */
+            justify-content: center; /* Центрирование по вертикали */
+            height: 100vh; /* Высота экрана */
+            margin: 10; /* Без отступов */
+			overflow: hidden; /* Скрыть переполнение */
+			background-image: url("sky.jpg"); /* Добавьте ссылку */
+			background-size: cover; 
+			object-fit: contain;
+        }
+        h1 {
+            font-size: 125px; /* Размер шрифта */
+            color:#ffad3f ; /* Цвет текста */
+			font-family:cursive;
+            text-align: center; /* Центрировать текст */
+            text-shadow: -1px -1px 0 orange, -1px -1px 0 orange, -1px 1px 0 , 1px 1px 0 orange;
+            margin-bottom: 0px; /* Отступ снизу */
+			margin-top: 100px;
+        }
+        img {
+            width: 70%; /* Ширина изображения */
+            height: auto; /* Высота для сохранения пропорций */
+			align: center;
+			
+		}
+        button {
+            background-color:#ffad4f ; /* Цвет фона кнопки */
+            color: white; /* Цвет текста кнопки */
+            font-size: 28px; /* Размер шрифта */
+            padding: 10px 20px; /* Отступ внутри кнопки */
+            margin: 10px; /* Отступ между кнопками */
+            border: 10px; /* Без границы */
+			margin-bottom: 150px;
+			border-color: black;
+            border-radius: 5px; /* Скругленные углы */
+            cursor: pointer; /* Указатель */
+        }
+        button:hover {
+            background-color: #ff554f; /* Цвет фона кнопки при наведении */
+			transition: background-color 0.6s ease; /* Плавный переход цвета */
+        }
+    </style>
+</head>
+<body>
+    <h1>Викторина</h1>
+    <center><img src="koles.png" alt=Колесо /></center>
+    <div>
+        <button onclick="startGame()">Начать игру</button>
+        <button onclick="openSettings()">Настройки</button>
+		<button onclick="openResults()">Результаты</button>
+    </div>
+
+    <script>
+        function startGame() { 
+        window.location.href = "game.html"; 
+		// Замените "game.html" на фактический адрес страницы игры
+        }
+        
+		
+        function openSettings() {
+        window.location.href = "settings.html";
+		 //Замените "settings.html" на фактический адрес страницы настроек
+        }
+		
+		function openResults() { 
+        window.location.href = "results.html"; 
+		// Замените "game.html" на фактический адрес страницы игры
+        }
+		
+    </script>
+</body>
+</html>
